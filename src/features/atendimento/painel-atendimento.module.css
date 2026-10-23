@@ -1,0 +1,55 @@
+.secao { scroll-margin-top: 2rem; }
+.cabecalho { display: flex; justify-content: space-between; gap: 1.5rem; align-items: center; margin-bottom: 2rem; }
+.cabecalho h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.06em; margin: .6rem 0; }
+.cabecalho p, .modos p, .emissao p { color: var(--texto-suave); margin: .4rem 0; line-height: 1.5; }
+.ponto { color: var(--laranja); }
+.status { display: grid; justify-items: end; gap: .7rem; font-size: .8rem; }
+.aoVivo { color: var(--verde); }
+.desconectado { color: var(--texto-suave); }
+.modos { display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); padding: 1.2rem 1.5rem; }
+.modos strong { font-size: .9rem; }
+.modos p { font-size: .8rem; }
+.seletor { display: flex; padding: .3rem; background: var(--fundo); border: 1px solid var(--borda); border-radius: .7rem; }
+.seletor button { padding: .7rem 1.1rem; color: var(--texto-suave); background: transparent; border: 0; border-radius: .4rem; font-weight: 700; min-height: 44px; cursor: pointer; }
+.seletor button[aria-pressed='true'] { background: var(--laranja); color: var(--sobre-laranja); }
+.mensagem { min-height: 1.4rem; margin: .6rem 0; color: var(--verde); font-size: .875rem; }
+.indicadores { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.indicador { border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); padding: 1.3rem; display: grid; gap: .6rem; }
+.indicador span { color: var(--texto-suave); font-size: .85rem; }
+.indicador strong { font-size: 2.3rem; line-height: 1.2; letter-spacing: -.04em; }
+.indicador small { color: var(--texto-suave); font-size: .75rem; }
+.colunas { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; }
+.emissao { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--superficie-elevada); border: 1px solid var(--borda); border-radius: .7rem; padding: 1.2rem; margin-bottom: 1.5rem; }
+.emissao h3 { margin: .6rem 0; }
+.emissao p { font-size: .8rem; }
+.acoes { display: grid; gap: .5rem; }
+.rotulo { display: flex; justify-content: space-between; gap: .5rem; font-size: .68rem; letter-spacing: .06em; color: var(--texto-suave); margin-bottom: 1rem; }
+.fila { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6rem; }
+.fila li { display: grid; gap: .4rem; text-align: center; padding: 1rem .3rem; border: 1px solid var(--borda); border-radius: .6rem; background: var(--fundo); }
+.fila li:first-child { border-color: var(--laranja); }
+.fila small { color: var(--texto-suave); font-size: .7rem; }
+.fila strong { font-size: 1.4rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.rodape { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .7rem; border-top: 1px solid var(--borda); padding-top: 1rem; margin-top: 1.5rem; font-size: .75rem; color: var(--texto-suave); }
+.guiches { display: grid; gap: .75rem; }
+.guiche { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; border: 1px solid var(--borda); border-radius: .7rem; background: var(--fundo); }
+.guiche > div { display: grid; gap: .35rem; }
+.guiche span { font-size: .8rem; font-weight: 600; }
+.guiche strong { font-size: 1.6rem; color: var(--laranja); }
+.guiche small { color: var(--texto-suave); font-size: .72rem; }
+.tituloRecentes { font-size: .8rem; padding-top: 1.4rem; margin-top: 1.5rem; border-top: 1px solid var(--borda); }
+.recentes { list-style: none; padding: 0; margin: 0; }
+.recentes li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem; padding: .8rem 0; border-bottom: 1px solid var(--borda); font-size: .8rem; }
+.recentes span, .recentes small { color: var(--texto-suave); }
+@media (max-width: 1050px) { .colunas { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+  .cabecalho { flex-direction: column; align-items: flex-start; }
+  .status { justify-items: start; }
+  .modos { align-items: flex-start; flex-direction: column; padding: 1rem; }
+  .seletor { width: 100%; } .seletor button { flex: 1; }
+  .indicadores { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .indicador { padding: 1rem; } .indicador strong { font-size: 2rem; }
+  .emissao { flex-direction: column; align-items: stretch; }
+  .acoes { grid-template-columns: 1fr 1fr; }
+  .fila { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .guiche { flex-wrap: wrap; }
+}

@@ -1,0 +1,7 @@
+.dialogo { width: min(32rem, calc(100% - 2rem)); border: 1px solid var(--borda); border-radius: var(--raio); padding: 2rem; background: var(--superficie); color: var(--texto); box-shadow: var(--sombra); }
+.dialogo::backdrop { background: rgb(2 8 18 / 85%); }
+.dialogo h2 { margin: .8rem 0; }
+.dialogo p { color: var(--texto-suave); line-height: 1.6; }
+.dialogo label { display: block; margin: 1.5rem 0 .6rem; line-height: 1.5; }
+.dialogo input { width: 100%; }
+.acoes { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }

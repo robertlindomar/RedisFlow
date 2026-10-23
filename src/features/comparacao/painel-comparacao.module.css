@@ -1,0 +1,26 @@
+.secao { margin-top: 1.5rem; scroll-margin-top: 2rem; }
+.formulario { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1.2rem; border: 1px solid var(--borda); border-radius: .7rem; background: var(--fundo); }
+.formulario label { display: grid; gap: .6rem; font-size: .8rem; color: var(--texto-suave); }
+.formulario select { min-width: 11rem; }
+.progresso { display: grid; gap: .6rem; padding: 1.2rem 0; font-size: .85rem; }
+.progresso span { color: var(--texto-suave); }
+.resumo { display: grid; gap: 1rem; margin-top: 1rem; border-top: 1px solid var(--borda); padding-top: 1.4rem; }
+.resumo h3 { margin: 0; font-size: 1rem; }
+.resumo p { color: var(--texto-suave); font-size: .8rem; line-height: 1.5; }
+.resumo > strong { color: var(--texto); font-size: .9rem; background: var(--superficie-elevada); padding: 1rem; border-radius: .6rem; line-height: 1.5; }
+.grafico { max-width: 48rem; padding: 1rem 0; }
+.grafico svg { display: block; width: 100%; overflow: visible; font-family: inherit; font-size: 14px; }
+.postgres rect { fill: var(--verde); }
+.redis rect { fill: var(--laranja); }
+.grafico text { fill: var(--texto-suave); }
+.grafico .valor { fill: var(--texto); font-weight: 700; }
+.tabela { overflow-x: auto; border: 1px solid var(--borda); border-radius: .7rem; }
+.tabela table { border-collapse: collapse; width: 100%; font-size: .8rem; white-space: nowrap; }
+.tabela caption { padding: 1rem; text-align: left; color: var(--texto-suave); }
+.tabela th, .tabela td { padding: 1rem; text-align: right; border-top: 1px solid var(--borda); font-variant-numeric: tabular-nums; }
+.tabela th:first-child { text-align: left; }
+.tabela thead { background: var(--fundo); color: var(--texto-suave); }
+.explicacao { border-top: 1px solid var(--borda); margin-top: 1.5rem; padding-top: 1.2rem; }
+.explicacao summary { cursor: pointer; padding: .6rem 0; font-size: .9rem; font-weight: 600; min-height: 44px; }
+.explicacao p { line-height: 1.7; color: var(--texto-suave); font-size: .85rem; max-width: 85ch; }
+@media (max-width: 650px) { .formulario { flex-direction: column; align-items: stretch; } .formulario select { width: 100%; } }

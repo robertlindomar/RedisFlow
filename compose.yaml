@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: redisflow
+      POSTGRES_PASSWORD: redisflow
+      POSTGRES_DB: redisflow
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U redisflow -d redisflow"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # Somente app acessa o banco (sem porta publicada para o host).
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - redisdata:/data
+
+  app:
+    build: .
+    environment:
+      PORT: "3000"
+      DATABASE_URL: postgres://redisflow:redisflow@postgres:5432/redisflow
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:

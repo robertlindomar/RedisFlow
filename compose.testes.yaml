@@ -1,0 +1,41 @@
+# Ambiente descartável e independente. Não publica portas nem utiliza volumes existentes.
+name: redisflow-testes
+services:
+  postgres-teste:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: redisflow
+      POSTGRES_PASSWORD: redisflow
+      POSTGRES_DB: redisflow_teste
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U redisflow -d redisflow_teste"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    tmpfs:
+      - /var/lib/postgresql/data
+  redis-teste:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  testes:
+    build:
+      context: .
+      target: dependencias
+    environment:
+      TESTE_BANCOS_REAIS: "1"
+      DATABASE_URL_TESTE: postgres://redisflow:redisflow@postgres-teste:5432/redisflow_teste
+      REDIS_URL_TESTE: redis://redis-teste:6379
+    volumes:
+      - ./src:/app/src:ro
+      - ./testes:/app/testes:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+    depends_on:
+      postgres-teste:
+        condition: service_healthy
+      redis-teste:
+        condition: service_healthy
+    command: ["npm", "run", "test:integracao"]
